@@ -1,0 +1,77 @@
+<div class="col-md-8">
+    <form #cadastroSalaForm="ngForm" (ngSubmit)="onSubmit(cadastroSalaForm)">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" ngModel name="nome" required [(ngModel)]="estacaoTrabalho.nome" class="form-control"
+                id="nome" placeholder="Nome" />
+        </div>
+        <div class="form-group">
+            <label for="observacao">Observação</label>
+            <input type="text" ngModel name="observacao" [(ngModel)]="estacaoTrabalho.observacao" class="form-control"
+                id="observacao" placeholder="Observação" />
+        </div>
+        <div class="form-group">
+            <label for="local">Local</label>
+            <ng-select id="local" bindLabel="nome" required name="local" [(ngModel)]="predioSelecionado"
+                [items]="predios">
+            </ng-select>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="demo-chip-list">
+                <mat-label>Empresas selecionadas</mat-label>
+                <mat-chip-list #empresasList>
+                    <mat-chip *ngFor="let empresa of empresasSelecionada" (removed)="removeEmpresa(empresa)">
+                        {{ empresa.nome }}
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                    <input placeholder="Adicionar empresa..." [formControl]="empresaCtrl" [matAutocomplete]="auto"
+                        [matChipInputFor]="empresasList" />
+                </mat-chip-list>
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addEmpresa($event)">
+                    <mat-option *ngFor="let empresa of empresasFiltradas | async" [value]="empresa._id">
+                        {{ empresa.nome }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="andarSala">Andar</label>
+                <input type="number" name="andar" required ngModel [(ngModel)]="estacaoTrabalho.andar"
+                    class="form-control" id="enderecoPredio" />
+            </div>
+            <div class="form-group col-md-4">
+                <label for="tipoRede">Tipo de Rede</label>
+                <input type="text" ngModel name="tipoRede" [(ngModel)]="estacaoTrabalho.tipoRede" class="form-control"
+                    id="tipoRede" />
+            </div>
+            <div class="form-group col-md-4">
+                <label for="tomadas">Tomadas</label>
+                <input type="number" [(ngModel)]="estacaoTrabalho.tomadas" name="tomadas" class="form-control"
+                    id="tomadas" min="1" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-12">
+                <mat-form-field style="width: 100%">
+                    <mat-label>Periféricos</mat-label>
+                    <mat-chip-list #perifericoList aria-label="Periféricos">
+                        <mat-chip *ngFor="let periferico of estacaoTrabalho.perifericos"
+                            (removed)="removePeriferico(periferico)">
+                            {{ periferico }}
+                            <mat-icon matChipRemove>cancel</mat-icon>
+                        </mat-chip>
+                        <input placeholder="Novo periférico" [matChipInputFor]="perifericoList"
+                            (matChipInputTokenEnd)="addPeriferico($event)" />
+                    </mat-chip-list>
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <button [disabled]="!cadastroSalaForm.valid || !empresasSelecionada.length" type="submit"
+                class="btn btn-primary">
+                {{ edit ? "Atualizar" : "Cadastrar" }}
+            </button>
+        </div>
+    </form>
+</div>

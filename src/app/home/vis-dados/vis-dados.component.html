@@ -1,0 +1,14 @@
+<div class="graph-canvas">
+  <app-number-alocacoes-graph (selectedRoom)="selectedRoomNumberParent($event)"></app-number-alocacoes-graph>
+</div>
+<div class="graph-canvas" *ngIf="showLineChartNumber">
+  <app-number-alocacoes-linear [roomId]="linechartNumberRoom" (shouldHideNumber)="hideNumber($event)">
+  </app-number-alocacoes-linear>
+</div>
+<div class="graph-canvas">
+  <app-average-alocacoes-graph (selectedRoom)="selectedRoomAvgParent($event)"></app-average-alocacoes-graph>
+</div>
+<div class="graph-canvas" *ngIf="showLineChartAvg">
+  <app-average-alocacoes-linear [roomId]="linechartAverageRoom" (shouldHideAvg)="hideAvg($event)">
+  </app-average-alocacoes-linear>
+</div>

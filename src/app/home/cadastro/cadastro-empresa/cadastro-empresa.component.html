@@ -1,0 +1,39 @@
+<div class="col-md-8">
+  <form
+    #cadastroEmpresaForm="ngForm"
+    (ngSubmit)="onSubmit(cadastroEmpresaForm)"
+  >
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input
+        type="text"
+        ngModel
+        name="nome"
+        [(ngModel)]="empresa.nome"
+        class="form-control"
+        required
+        id="nome"
+        placeholder="Nome"
+      />
+    </div>
+    <div class="form-group">
+      <label for="dominio">Domínio (ex: dominio.com.br)</label>
+      <input
+        type="text"
+        ngModel
+        name="dominio"
+        required
+        pattern="(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]"
+        [(ngModel)]="empresa.dominio"
+        class="form-control"
+        id="dominio"
+        placeholder="Domínio"
+      />
+    </div>
+    <div>
+      <button [disabled]="!cadastroEmpresaForm.valid" type="submit" class="btn btn-primary">
+        {{ edit ? "Atualizar" : "Cadastrar" }}
+      </button>
+    </div>
+  </form>
+</div>

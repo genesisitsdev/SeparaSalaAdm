@@ -1,0 +1,31 @@
+<div class="col-md-12">
+  <table
+    #dataTable
+    class="display"
+    *ngIf="isDataLoaded"
+    style="border-bottom-width: 0px"
+  >
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Domínio</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let empresa of empresas">
+        <td>{{ empresa.nome }}</td>
+        <td>{{ empresa.dominio }}</td>
+        <td>
+          <a (click)="clickEdit(empresa)">
+            <img
+              src="../../../../assets/pencil-edit-button.svg"
+              class="svg-image-action"
+            />
+          </a>
+        </td>
+      </tr>
+    </tbody>
+    <br />
+  </table>
+</div>

@@ -1,0 +1,52 @@
+<div class="col-md-12">
+  <table
+    #dataTable
+    class="display"
+    *ngIf="isDataLoaded"
+    style="border-bottom-width: 0px"
+  >
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>Número</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+        <th>CEP</th>
+        <th>Posição</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let predio of predios">
+        <td>{{ predio.nome }}</td>
+        <td>{{ predio.endereco }}</td>
+        <td>{{ predio.numero }}</td>
+        <td>{{ predio.cidade }}</td>
+        <td>{{ predio.estado }}</td>
+        <td>{{ predio.cep }}</td>
+        <td>
+          <a
+            target="_blank"
+            [href]="
+              'https://www.google.com/maps/search/?api=1&query=' +
+              predio.lat +
+              ',' +
+              predio.long
+            "
+            >{{ predio.lat }},{{ predio.long }}</a
+          >
+        </td>
+        <td>
+          <a (click)="clickEdit(predio)">
+            <img
+              src="../../../../assets/pencil-edit-button.svg"
+              class="svg-image-action"
+            />
+          </a>
+        </td>
+      </tr>
+    </tbody>
+    <br />
+  </table>
+</div>

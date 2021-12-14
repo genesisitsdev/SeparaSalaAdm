@@ -1,0 +1,39 @@
+div {
+  height: 100%;
+}
+img.fundo {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+}
+.tretaflex {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-self: center;
+}
+#formContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cardBackground {
+  align-self: center;
+  padding: 1.5rem;
+  border: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.logo {
+  width: 4rem;
+}

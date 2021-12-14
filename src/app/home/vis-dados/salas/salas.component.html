@@ -1,0 +1,62 @@
+<div class="col-md-12">
+  <table #dataTable class="display" *ngIf="isDataLoaded" style="width: 100%">
+    <thead>
+      <tr>
+        <th>Empresas</th>
+        <th>Nome</th>
+        <th>Andar</th>
+        <th>Tamanho</th>
+        <th>Local</th>
+        <th>Itens</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sala of salas">
+        <td>{{ sala.empresasNome }}</td>
+        <td>{{ sala.nome }}</td>
+        <td>{{ sala.andar }}</td>
+        <td>{{ sala.tamanho }}</td>
+        <td>{{ sala.predio.nome }}</td>
+        <td>
+          <a *ngIf="sala.caboRede">
+            <img src="../../../../assets/internet.svg" class="svg-image" />*
+          </a>
+          <a *ngIf="sala.wifi">
+            <img src="../../../../assets/internet.svg" class="svg-image" />
+          </a>
+          <a *ngIf="sala.telefone">
+            <img src="../../../../assets/phone-call.svg" class="svg-image" />
+          </a>
+          <a *ngIf="sala.quadro">
+            <img src="../../../../assets/blackboard.svg" class="svg-image" />
+          </a>
+          <a *ngIf="sala.projetor">
+            <img src="../../../../assets/projector.svg" class="svg-image" />
+          </a>
+          <a *ngIf="sala.televisao">
+            <img src="../../../../assets/television.svg" class="svg-image" />
+          </a>
+          <a *ngIf="sala.telepresenca">
+            <img src="../../../../assets/webcam.svg" class="svg-image" />
+          </a>
+        </td>
+        <td>
+          <a (click)="clickEdit(sala)">
+            <img
+              src="../../../../assets/pencil-edit-button.svg"
+              class="svg-image-action"
+            />
+          </a>
+          <a (click)="clickQrCode(sala)">
+            <img
+              src="../../../../assets/qr-code.svg"
+              class="svg-image-action"
+              alt="Gerar QR Code"
+            />
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,31 @@
+<img class="fundo" src="../../assets/fundo.png" alt="fundo" />
+<div class="tretaflex">
+    <div id="formContent">
+        <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+            <div class="card cardBackground">
+                <div class="d-flex justify-content-between mb-3">
+                    <img class="logo" src="../../assets/logo_hitss.jpg" alt="logo hitss" />
+                    <img class="logo" src="../../assets/logo_claro.jpg" alt="logo claro" />
+                </div>
+                <div class="form-group">
+                    <label for="user">Usuário</label>
+                    <input type="text" id="user" class="form-control" name="user" placeholder="Usuário" ngModel
+                        required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" class="form-control" ngModel name="password" required
+                        placeholder="Senha" minlength="6" />
+                </div>
+                <div class="form-group">
+                    <div id="login-recaptcha"></div>
+                </div>
+                <p class="text-danger">{{ msgError }}</p>
+                <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid || !token">
+                    Log in
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="script_area" style="display: none;"></div>

@@ -1,0 +1,24 @@
+.card-style{
+    padding:1rem;
+}
+
+.svg-image-action{
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+span.invisible {
+    display: none
+}
+
+.posicao-th {
+    position: relative; 
+    right: 8em;
+}
+
+.posicao-td {
+    right: 7.5em; 
+    position: relative;
+}

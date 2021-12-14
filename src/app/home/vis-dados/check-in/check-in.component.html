@@ -1,0 +1,47 @@
+<div class="col-md-12">
+  <table
+    #dataTable
+    class="display"
+    *ngIf="isDataLoaded"
+    style="border-bottom-width: 0px"
+  >
+    <thead>
+      <tr>
+        <th>Estação</th>
+        <th>Prédio</th>
+        <th>Empresa</th>
+        <th>Usuário</th>
+        <th>Posição</th>
+        <th>Hora do Check-In</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let checkIn of checkIns">
+        <td>{{ checkIn.estacao.nome }}</td>
+        <td>{{ checkIn.estacao.predio.nome }}</td>
+        <td>{{ checkIn.estacao.empresa.nome }}</td>
+        <td>{{ checkIn.usuario.username }}</td>
+        <td>
+          <a
+            target="_blank"
+            [href]="
+              'https://www.google.com/maps/search/?api=1&query=' +
+              checkIn.lat +
+              ',' +
+              checkIn.long
+            "
+            >{{ checkIn.lat }},{{ checkIn.long }}</a
+          >
+        </td>
+        <td>{{ checkIn.created_at | date: "dd/MM/yyyy HH:mm" }}</td>
+        <td>
+          <a (click)="clickDelete(checkIn)">
+            <img src="../../../../assets/delete.svg" class="svg-image-action" />
+          </a>
+        </td>
+      </tr>
+    </tbody>
+    <br />
+  </table>
+</div>

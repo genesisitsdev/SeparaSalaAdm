@@ -1,0 +1,167 @@
+<div class="col-md-8">
+  <form #cadastroSalaForm="ngForm" (ngSubmit)="onSubmit(cadastroSalaForm)">
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input
+        type="text"
+        ngModel
+        name="nome"
+        required
+        [(ngModel)]="Sala.nome"
+        class="form-control"
+        id="nome"
+        placeholder="Nome"
+      />
+    </div>
+    <div class="form-group">
+      <label for="local">Local</label>
+      <ng-select
+        id="local"
+        bindLabel="nome"
+        required
+        name="local"
+        [(ngModel)]="predioSelecionado"
+        [items]="predios"
+      >
+      </ng-select>
+    </div>
+    <div class="form-group">
+      <mat-form-field class="demo-chip-list">
+        <mat-label>Empresas selecionadas</mat-label>
+        <mat-chip-list #empresasList>
+          <mat-chip
+            *ngFor="let empresa of empresasSelecionada"
+            (removed)="removeEmpresa(empresa)">
+            {{ empresa.nome }}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+          <input
+            placeholder="Adicionar empresa..."
+            [formControl]="empresaCtrl"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="empresasList"
+          />
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addEmpresa($event)">
+          <mat-option *ngFor="let empresa of empresasFiltradas | async" [value]="empresa._id">
+            {{ empresa.nome }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-4">
+        <label for="andarSala">Andar</label>
+        <input
+          type="number"
+          name="andar"
+          required
+          ngModel
+          [(ngModel)]="Sala.andar"
+          class="form-control"
+          id="enderecoPredio"
+        />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="capacidadeSala">Capacidade</label>
+        <input
+          type="number"
+          ngModel
+          required
+          name="tamanho"
+          [(ngModel)]="Sala.tamanho"
+          class="form-control"
+          id="capacidadeSala"
+        />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="numeroSala">Número da sala</label>
+        <input
+          type="number"
+          [(ngModel)]="Sala.numero"
+          required
+          name="numero"
+          class="form-control"
+          id="numeroSala"
+        />
+      </div>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        [(ngModel)]="Sala.televisao"
+        type="checkbox"
+        id="televisao"
+        name="televisao"
+      />
+      <label class="form-check-label" for="televisao">Televisão</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        [(ngModel)]="Sala.projetor"
+        ngModel
+        type="checkbox"
+        id="projetor"
+        name="projetor"
+      />
+      <label class="form-check-label" for="projetor">Projetor</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        [(ngModel)]="Sala.caboRede"
+        type="checkbox"
+        id="caboRede"
+        name="caboRede"
+      />
+      <label class="form-check-label" for="caboRede">Cabo de Rede</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        [(ngModel)]="Sala.wifi"
+        type="checkbox"
+        id="wifi"
+        name="wifi"
+      />
+      <label class="form-check-label" for="wifi">Wi-fi</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        [(ngModel)]="Sala.telefone"
+        type="checkbox"
+        id="telefone"
+        name="telefone"
+        [(ngModel)]="checkboxInit"
+      />
+      <label class="form-check-label" for="telefone">Telefone</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        [(ngModel)]="Sala.telepresenca"
+        type="checkbox"
+        id="telepresenca"
+        name="telepresenca"
+      />
+      <label class="form-check-label" for="telepresenca">Telepresença</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        [(ngModel)]="Sala.quadro"
+        type="checkbox"
+        id="quadro"
+        name="quadro"
+      />
+      <label class="form-check-label" for="quadro">Quadro</label>
+    </div>
+    <div>
+      <button [disabled]="!cadastroSalaForm.valid || !empresasSelecionada.length" type="submit" class="btn btn-primary mt-5">
+        {{ edit ? "Atualizar" : "Cadastrar" }}
+      </button>
+    </div>
+  </form>
+</div>

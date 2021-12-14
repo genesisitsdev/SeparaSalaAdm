@@ -1,0 +1,42 @@
+<div class="col-md-12">
+  <table
+    #dataTable
+    class="display"
+    *ngIf="isDataLoaded"
+    style="border-bottom-width: 0px"
+  >
+    <thead>
+      <tr>
+        <th>Empresa</th>
+        <th>Prédio</th>
+        <th>Andar</th>
+        <th>Estação</th>
+        <th>Dia</th>
+        <th>Início</th>
+        <th>Fim</th>
+        <th>Usuário</th>
+        <th>Contato</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alocacao of alocacoes">
+        <td>{{ alocacao.empresasNome }}</td>
+        <td>{{ alocacao.estacao.predio.nome }}</td>
+        <td>{{ alocacao.estacao.andar }}</td>
+        <td>{{ alocacao.estacao.nome }}</td>
+        <td>{{ alocacao.start | date: "dd/MM/yyyy" }}</td>
+        <td>{{ alocacao.start | date: "HH:mm" }}</td>
+        <td>{{ alocacao.end | date: "HH:mm" }}</td>
+        <td>{{ alocacao.usuarioId.username }}</td>
+        <td>{{ alocacao.usuarioId.email }}</td>
+        <td>
+          <a (click)="clickDelete(alocacao)">
+            <img src="../../../../assets/delete.svg" class="svg-image-action" />
+          </a>
+        </td>
+      </tr>
+    </tbody>
+    <br />
+  </table>
+</div>

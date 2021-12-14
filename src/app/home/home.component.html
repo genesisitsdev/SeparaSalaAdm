@@ -1,0 +1,94 @@
+<nav class="navbar navbar-expand-lg bg-green navbar-light">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/admin/home">Reservas</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li routerLinkActive="active" class="nav-item">
+          <a class="nav-link" routerLink="/admin/alocacoes/salas"
+            >Alocações de Salas</a
+          >
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+          <a class="nav-link" routerLink="/admin/alocacoes/estacoes"
+            >Alocações de Estações</a
+          >
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+          <a class="nav-link" routerLink="/admin/empresas">Empresas</a>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+          <a class="nav-link" routerLink="/admin/predios">Prédios</a>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+          <a class="nav-link" routerLink="/admin/salas">Salas</a>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+          <a class="nav-link" routerLink="/admin/estacoes"
+            >Estações de Trabalho</a
+          >
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+          <a class="nav-link" routerLink="/admin/check-in">Check In</a>
+        </li>
+        <li routerLinkActive="active" class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="/admin/cadastro"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Cadastro
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a
+              class="dropdown-item"
+              routerLinkActive="active"
+              routerLink="/admin/cadastro/empresa"
+              >Empresas</a
+            >
+            <a
+              class="dropdown-item"
+              routerLinkActive="active"
+              routerLink="/admin/cadastro/estacao"
+              >Estações de Trabalho</a
+            >
+            <a
+              class="dropdown-item"
+              routerLinkActive="active"
+              routerLink="/admin/cadastro/predio"
+              >Prédios</a
+            >
+            <a
+              class="dropdown-item"
+              routerLinkActive="active"
+              routerLink="/admin/cadastro/sala"
+              >Salas</a
+            >
+          </div>
+        </li>
+        <li routerLinkActive="active" class="nav-item">
+          <a class="nav-link" (click)="logout()">Sair</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container pb-5">
+  <router-outlet></router-outlet>
+</div>
