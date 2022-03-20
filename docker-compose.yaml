@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+    separasalaadm:
+        image: node:14
+        container_name: separasalaadm
+        volumes:
+          - ./:/home/separasala
+        ports:
+            - '4200:4200'
+        networks:
+            - separasalaadm
+networks:
+    separasalaadm:
+        driver: bridge
+
